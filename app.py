@@ -83,9 +83,10 @@ async def extract_text_from_pdf(file: UploadFile = File(...)):
 
         website_match = re.search(r"(https?://[^\s]+|www\.[^\s]+)", others_text)
         phone_match = re.search(
-            r"(?i)(?:toll[\s-]?free[\s-]?number[:\-]?\s*)?(\b(?:1?8?00|08\d{2})[\d\s\-]{4,10}\b|\b\d{7,12}\b)",
-            others_text
-        )
+        r"(?i)(?:toll[\s-]?free[\s-]?number[:\-]?\s*)?(\+91[\s\-]?\d{2,5}[\s\-]?\d{3,4}[\s\-]?\d{3,4}|\b(?:1?8?00|08\d{2})[\d\s\-]{4,10}\b|\b\d{7,12}\b)",
+        others_text)
+
+
         email_match = re.search(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", others_text)
 
         contact_details = {
